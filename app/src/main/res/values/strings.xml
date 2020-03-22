@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TaipeiWeatherApp</string>
+    <string name="welcome_back">歡迎回來</string>
+    <string name="confirm">確認</string>
+    <string name="cancel">取消</string>
+    <string name="get_data_error">取得資料失敗，請稍後再試</string>
+</resources>
