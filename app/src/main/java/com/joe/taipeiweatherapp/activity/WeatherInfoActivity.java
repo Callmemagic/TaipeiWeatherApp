@@ -43,18 +43,5 @@ public class WeatherInfoActivity extends AppCompatActivity {
                     weatherInfoTypeBean.getParams().getParameterName() +
                     weatherInfoTypeBean.getParams().getParameterUnit());
         }
-
-        if(true == SharedPreferenceUtil.getInstance(this).readBoolPref(ConstantValue.PREF_WEATHER, ConstantValue.PREF_ENTERED))
-        {
-            //有進來過，顯示訊息
-            Toast.makeText(this, getString(R.string.welcome_back), Toast.LENGTH_SHORT).show();
-            CustomDialogUtility.showDialog(this, getString(R.string.welcome_back), getString(R.string.welcome_back));
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        SharedPreferenceUtil.getInstance(this).writePref(ConstantValue.PREF_WEATHER, ConstantValue.PREF_ENTERED, true);
     }
 }

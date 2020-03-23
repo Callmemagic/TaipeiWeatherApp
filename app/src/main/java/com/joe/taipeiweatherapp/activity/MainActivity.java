@@ -24,7 +24,9 @@ import com.joe.taipeiweatherapp.R;
 import com.joe.taipeiweatherapp.adapter.WeatherAdapter;
 import com.joe.taipeiweatherapp.databinding.ActivityMainBinding;
 import com.joe.taipeiweatherapp.listener.OnClickWeatherItemListener;
+import com.joe.taipeiweatherapp.util.CustomDialogUtility;
 import com.joe.taipeiweatherapp.util.ProgressDialogUtil;
+import com.joe.taipeiweatherapp.util.SharedPreferenceUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,6 +46,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(activityMainBinding.getRoot());
 
         getDataByVolley();
+
+        if(true == SharedPreferenceUtil.getInstance(this).readBoolPref(ConstantValue.PREF_WEATHER, ConstantValue.PREF_ENTERED))
+        {
+            //有進來過，顯示訊息
+            Toast.makeText(this, getString(R.string.welcome_back), Toast.LENGTH_SHORT).show();
+            CustomDialogUtility.showDialog(this, getString(R.string.welcome_back), getString(R.string.welcome_back));
+        }
+        else
+        {
+            SharedPreferenceUtil.getInstance(this).writePref(ConstantValue.PREF_WEATHER, ConstantValue.PREF_ENTERED, true);
+        }
     }
 
     private void getDataByVolley() {
